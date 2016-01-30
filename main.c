@@ -3,6 +3,8 @@
 
 #include <editline/readline.h>
 
+#include "mpc.h"
+
 static char input[2048];
 
 int main(int argc, char** argv) {
