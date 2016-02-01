@@ -5,6 +5,15 @@
 
 #include "mpc.h"
 
+/*Declare New lval Struct*/
+typedef struct {
+	int type;
+	long num;
+	int err;
+} lval;
+
+enum { LVAL_NUM, LVAL_ERR };
+
 long eval_op(long x, char* op, long y) {
 	if(strcmp(op, "+") == 0) {
 		return x + y;
@@ -70,7 +79,7 @@ int main(int argc, char** argv) {
 
 		if(mpc_parse("<stdin>", input, Lispy, &r)) {
 			/*On success print and delete the AST*/
-			mpc_ast_print(r.output);
+			//mpc_ast_print(r.output);
 			long result = eval(r.output);
 			printf("%li\n", result);
 			mpc_ast_delete(r.output);
