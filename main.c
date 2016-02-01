@@ -96,6 +96,7 @@ lval eval_op(lval x, char* op, lval y) {
 
 lval eval(mpc_ast_t* t) {
 	if(strstr(t->tag, "number")) {
+		/*Check if there is some error in conversion*/
 		errno = 0;
 		long x = strtol(t->contents, NULL, 10);
 		return errno != ERANGE ? lval_num(x) : lval_err(LERR_BAD_NUM);
@@ -144,8 +145,6 @@ int main(int argc, char** argv) {
 		mpc_result_t r;
 
 		if(mpc_parse("<stdin>", input, Lispy, &r)) {
-			/*On success print and delete the AST*/
-			//mpc_ast_print(r.output);
 			lval result = eval(r.output);
 			lval_println(result);
 			mpc_ast_delete(r.output);
