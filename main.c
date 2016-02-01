@@ -44,12 +44,16 @@ void lval_print(lval v) {
 			break;
 		/*In this case the type is an error*/
 		case LVAL_ERR:
+			/*Check what type of error is.*/
+			/*In this case division with zero*/
 			if (v.err == LERR_DIV_ZERO) {
 				printf("Error: Division By Zero!");
 			}
+			/*Invalid operator*/
 			if (v.err == LERR_BAD_OP) {
 				printf("Error: Invalid Operator!");
 			}
+			/*Invalid number*/
 			if (v.err == LERR_BAD_NUM) {
 				printf("Error: Invalid Number!");
 			}
