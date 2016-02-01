@@ -1,4 +1,4 @@
 Build your own Lisp
 ===================
 
-http://buildyourownlisp.com
+This is the programming language for the book http://buildyourownlisp.com
