@@ -18,6 +18,7 @@ typedef struct {
 	int err;
 } lval;
 
+/*Create a new number type lval*/
 lval lval_num(long x) {
 	lval v;
 	v.type = LVAL_NUM;
@@ -25,6 +26,7 @@ lval lval_num(long x) {
 	return v;
 } 
 
+/*Create a new error type lval*/
 lval lval_err(int x) {
 	lval v;
 	v.type = LVAL_ERR;
@@ -32,6 +34,7 @@ lval lval_err(int x) {
 	return v;
 }
 
+/*Print an "lval"*/
 void lval_print(lval v) {
 	switch(v.type) {
 		case LVAL_NUM:
@@ -51,6 +54,7 @@ void lval_print(lval v) {
 	}
 }
 
+/*Print an "lval" followed by newline */
 void lval_println(lval v) {
 	lval_print(v);
 	putchar('\n');
