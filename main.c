@@ -68,7 +68,7 @@ void lval_println(lval v) {
 }
 
 lval eval_op(lval x, char* op, lval y) {
-
+	/*If either value is an error return it*/
 	if (x.type == LVAL_ERR) {
 		return x;
 	}
@@ -77,6 +77,7 @@ lval eval_op(lval x, char* op, lval y) {
 		return y;
 	}
 
+	/* Otherwise do maths on the number values*/
 	if(strcmp(op, "+") == 0) {
 		return lval_num(x.num + y.num);
 	}
@@ -87,6 +88,7 @@ lval eval_op(lval x, char* op, lval y) {
 		return lval_num(x.num * y.num);
 	}
 	if(strcmp(op, "/") == 0) {
+		/*If second operand is zero return error*/
 		return y.num == 0 ? lval_err(LERR_DIV_ZERO) : lval_num(x.num / y.num);
 	}
 	return lval_err(LERR_BAD_OP);
