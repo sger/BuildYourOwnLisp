@@ -131,8 +131,8 @@ int main(int argc, char** argv) {
 		if(mpc_parse("<stdin>", input, Lispy, &r)) {
 			/*On success print and delete the AST*/
 			//mpc_ast_print(r.output);
-			long result = eval(r.output);
-			printf("%li\n", result);
+			lval result = eval(r.output);
+			lval_println(result);
 			mpc_ast_delete(r.output);
 		} else {
 			/*Otherwise print and delete the Error*/
